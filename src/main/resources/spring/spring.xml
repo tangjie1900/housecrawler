@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="argsEntity" class="cn.cout.entity.ArgsEntity">
+        <property name="cityName" value="shanghai" />
+        <property name="webNames" value="58同城;赶集;自如;链家"/>
+    </bean>
+
+    <!--要爬取的网站  现在暂时爬取租房的数据 -->
+    <bean id="58同城" class="cn.cout.entity.RuleEntity">
+        <property name="crawlerWebUrl"
+                  value="http://sh.58.com/chuzu/?PGTID=0d100000-0000-286f-d203-2df4d2e37c9a&amp;ClickID=1"/>
+        <property name="houseType" value="chuzu"/>
+    </bean>
+    <bean id="赶集" class="cn.cout.entity.RuleEntity">
+        <property name="crawlerWebUrl" value="http://sh.ganji.com/fang1"/>
+    </bean>
+    <bean id="自如" class="cn.cout.entity.RuleEntity">
+        <property name="crawlerWebUrl" value="http://sh.ziroom.com/z/nl/z2.html"/>
+    </bean>
+    <bean id="链家" class="cn.cout.entity.RuleEntity">
+        <property name="crawlerWebUrl" value="https://sh.lianjia.com/zufang/"/>
+    </bean>
+
+</beans>
+
