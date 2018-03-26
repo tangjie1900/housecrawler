@@ -1,12 +1,18 @@
 package cn.cout.controller;
 
 import cn.cout.entity.*;
+import cn.cout.handler.*;
 import cn.cout.service.IWebSiteService;
+import cn.cout.service.impl.WebSiteServiceImpl;
 import cn.cout.utils.ApplicationContextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 /**
- * 1.读取要抓取的网站配置文件 rule.properties
+ * 1.读取要抓取的网站配置文件
  * 2.args 中传入的是要抓取的城市的名字
  * 3.根据城市的handler 以及 要抓去的网站 rule 生成  url
  * 4.抓取数据，入库
@@ -22,33 +28,62 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class ProgramController {
 
-	@Autowired
 	private static IWebSiteService webSiteService;
+
+	public static Map<String, String> webhandlerHashMap = new HashMap<String, String>();
 
 	public static void main(String[] args) {
 		args = new String[]{"classpath:spring/spring.xml"};
 		String beanName = "argsEntity";
 		try {
+
 			ArgsEntity argsEntity = ApplicationContextUtils.getBean(args, beanName);
 
-			System.out.println(1);
+			if (argsEntity == null)
+				return;
 
+			//城市名字拼音
+			String cityname = argsEntity.getCityName();
+
+			//城市中文名字
+			String citynameCN = argsEntity.getCityNameCN();
+
+			//城市名字 url 缩写
+			String citynameUrlAbb = argsEntity.getCityNameUrlAbb();
+
+			//网站名字
+			String[] arrs_Webnames = checkRequestWebNames(argsEntity.getWebNames());
+
+			initHashMap();
+
+			webSiteService = new WebSiteServiceImpl();
+
+			for (int i = 0; i < arrs_Webnames.length; i++) {
+
+				IWebHandler webhandler = (IWebHandler) Class.forName(webhandlerHashMap.get(arrs_Webnames[i])).newInstance();
+				if (null == webhandler) {
+					continue;
+				}
+				webSiteService.set_Webhandler(webhandler);
+				webSiteService.excute(citynameUrlAbb, cityname);
+			}
 		} catch (Exception e) {
-
+			System.out.println(e.getMessage());
 		}
-		//argsdao
+	}
 
-		System.out.println(1);
-//		String cityname = argsDao.getCityName();
-//		String webnames = argsDao.getWebNames();
-//
-//		if (cityname.length() <= 0 || cityname == null)
-//			return;
-//		if (webnames.length() <= 0 || webnames == null)
-//			webnames = "58同城;赶集;自如;链家";
-//
-//		String[] arrs_webnames = webnames.split(";");
+	public static void initHashMap() {
+		webhandlerHashMap.put("58同城", "cn.cout.handler.SameCity58WebHandler");
+		webhandlerHashMap.put("赶集", "cn.cout.handler.GanjiWebHandler");
+		webhandlerHashMap.put("自如", "cn.cout.handler.ZiruWebHandler");
+		webhandlerHashMap.put("链家", "cn.cout.handler.LianjiaWebHandler");
+	}
 
+
+	public static String[] checkRequestWebNames(String webnames) {
+		if (webnames == null || webnames.length() <= 0)
+			webnames = "58同城;赶集;自如;链家";
+		return webnames.split(";");
 	}
 
 
