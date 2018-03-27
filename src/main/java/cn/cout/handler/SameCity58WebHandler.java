@@ -61,6 +61,7 @@ public class SameCity58WebHandler implements IWebHandler {
 				String logrString = ele.attr("logr");
 				//房子的id
 				String houseid = logrString.split("_")[3];
+
 				Element websourceELe = ele.select("div.img_list>a").get(0);
 				String websourceEstring = websourceELe.attr("href");
 
