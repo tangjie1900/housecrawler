@@ -1,7 +1,7 @@
 package cn.cout.entity;
 
 public class HouseID {
-	private long id;
+	private int id;
 
 	private int webid;
 
