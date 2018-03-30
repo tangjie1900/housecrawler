@@ -1,16 +1,15 @@
 package cn.cout.controller;
 
-import cn.cout.dao.IHouseIDDao;
+
 import cn.cout.entity.*;
 import cn.cout.handler.*;
 import cn.cout.service.IWebSiteService;
 import cn.cout.service.impl.WebSiteServiceImpl;
 import cn.cout.utils.ApplicationContextUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * 1.读取要抓取的网站配置文件
@@ -32,9 +31,6 @@ public class ProgramController {
 	private static IWebSiteService webSiteService;
 
 	public static Map<String, String> webhandlerHashMap = new HashMap<String, String>();
-
-
-	private static cn.cout.dao.IHouseIDDao IHouseIDDao;
 
 	public static void main(String[] args) {
 		args = new String[]{"classpath:spring/spring.xml", "classpath:spring/spring-dao.xml", "classpath:mapper/HouseIDMapper.xml", "classpath:mybatis.xml"};
@@ -61,17 +57,6 @@ public class ProgramController {
 			initHashMap();
 
 			webSiteService = new WebSiteServiceImpl();
-
-			IHouseIDDao= ApplicationContextUtils.getBean(args, "IHouseIDDao");
-			HouseID houseID = new HouseID();
-			houseID.setCityid(1);
-			houseID.setWebid(3);
-			houseID.setHouseid("13_325435435");
-			try {
-				IHouseIDDao.add(houseID);
-			} catch (Exception ex) {
-				System.out.println(ex.getMessage());
-			}
 
 			for (int i = 0; i < arrs_Webnames.length; i++) {
 
