@@ -33,6 +33,8 @@ public class ProgramController {
 	public static Map<String, String> webhandlerHashMap = new HashMap<String, String>();
 
 	public static void main(String[] args) {
+
+
 		args = new String[]{"classpath:spring/spring.xml", "classpath:spring/spring-dao.xml", "classpath:mapper/HouseIDMapper.xml", "classpath:mybatis.xml"};
 		String beanName = "argsEntity";
 		try {
