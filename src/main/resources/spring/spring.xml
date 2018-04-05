@@ -9,6 +9,7 @@
         <property name="cityNameUrlAbb" value="sh"/>
         <property name="webNames" value="58同城;赶集;自如;链家"/>
     </bean>
+
 </beans>
 
         <!--&lt;!&ndash;要爬取的网站  现在暂时爬取租房的数据 &ndash;&gt;-->

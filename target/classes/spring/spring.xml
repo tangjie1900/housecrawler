@@ -10,22 +10,23 @@
         <property name="webNames" value="58同城;赶集;自如;链家"/>
     </bean>
 
-    <!--要爬取的网站  现在暂时爬取租房的数据 -->
-    <bean id="58同城" class="cn.cout.entity.RuleEntity">
-        <property name="crawlerWebUrl"
-                  value="http://{cityname}.58.com/chuzu/?PGTID={pid}&amp;ClickID=1"/>
-    </bean>
-    <bean id="赶集" class="cn.cout.entity.RuleEntity">
-        <property name="crawlerWebUrl" value="http://{cityname}.ganji.com/fang1"/>
-    </bean>
-
-    <bean id="自如" class="cn.cout.entity.RuleEntity">
-        <property name="crawlerWebUrl" value="http://{cityname}.ziroom.com/z/nl/z2.html"/>
-    </bean>
-
-    <bean id="链家" class="cn.cout.entity.RuleEntity">
-        <property name="crawlerWebUrl" value="https://{cityname}.lianjia.com/zufang/"/>
-    </bean>
-
 </beans>
+
+        <!--&lt;!&ndash;要爬取的网站  现在暂时爬取租房的数据 &ndash;&gt;-->
+        <!--<bean id="58同城" class="cn.cout.entity.RuleEntity">-->
+        <!--<property name="crawlerWebUrl"-->
+        <!--value="http://{cityname}.58.com/chuzu/?PGTID={pid}&amp;ClickID=1"/>-->
+        <!--</bean>-->
+        <!--<bean id="赶集" class="cn.cout.entity.RuleEntity">-->
+        <!--<property name="crawlerWebUrl" value="http://{cityname}.ganji.com/fang1"/>-->
+        <!--</bean>-->
+
+        <!--<bean id="自如" class="cn.cout.entity.RuleEntity">-->
+        <!--<property name="crawlerWebUrl" value="http://{cityname}.ziroom.com/z/nl/z2.html"/>-->
+        <!--</bean>-->
+
+        <!--<bean id="链家" class="cn.cout.entity.RuleEntity">-->
+        <!--<property name="crawlerWebUrl" value="https://{cityname}.lianjia.com/zufang/"/>-->
+        <!--</bean>-->
+
 

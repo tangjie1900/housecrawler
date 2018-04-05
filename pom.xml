@@ -28,11 +28,6 @@
             <artifactId>mybatis</artifactId>
             <version>3.4.2</version>
         </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis-spring</artifactId>
-            <version>1.2.2</version>
-        </dependency>
 
         <!--数据库 -->
         <dependency>
@@ -51,7 +46,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.41</version>
         </dependency>
-
 
         <!-- Map工具类 -->
         <!-- Map工具类 -->

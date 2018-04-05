@@ -11,6 +11,7 @@ import cn.cout.utils.ApplicationContextUtils;
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
  * 1.读取要抓取的网站配置文件
  * 2.args 中传入的是要抓取的城市的名字
@@ -33,11 +34,13 @@ public class ProgramController {
 	public static Map<String, String> webhandlerHashMap = new HashMap<String, String>();
 
 	public static void main(String[] args) {
-		args = new String[]{"classpath:spring/spring.xml", "classpath:spring/spring-dao.xml"};
+		args = new String[]{"classpath:spring/spring.xml", "classpath:mybatis.xml", "classpath:mapper/HouseIDMapper.xml"};
 		String beanName = "argsEntity";
 		try {
+			ApplicationContextUtils.initAbstractApplicationContext(args);
+			ArgsEntity argsEntity = (ArgsEntity) ApplicationContextUtils.getAbstractApplicationContext().getBean(beanName);
+			//ArgsEntity argsEntity = ApplicationContextUtils.getBean(args, beanName);
 
-			ArgsEntity argsEntity = ApplicationContextUtils.getBean(args, beanName);
 
 			if (argsEntity == null)
 				return;
@@ -85,6 +88,5 @@ public class ProgramController {
 			webnames = "58同城;赶集;自如;链家";
 		return webnames.split(";");
 	}
-
 
 }
