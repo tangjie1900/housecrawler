@@ -33,9 +33,7 @@ public class ProgramController {
 	public static Map<String, String> webhandlerHashMap = new HashMap<String, String>();
 
 	public static void main(String[] args) {
-
-
-		args = new String[]{"classpath:spring/spring.xml", "classpath:spring/spring-dao.xml", "classpath:mapper/HouseIDMapper.xml", "classpath:mybatis.xml"};
+		args = new String[]{"classpath:spring/spring.xml", "classpath:spring/spring-dao.xml"};
 		String beanName = "argsEntity";
 		try {
 
@@ -47,7 +45,7 @@ public class ProgramController {
 			//城市名字拼音
 			String cityname = argsEntity.getCityName();
 
-			//城市中文名字
+			//城市中文
 			String citynameCN = argsEntity.getCityNameCN();
 
 			//城市名字 url 缩写
