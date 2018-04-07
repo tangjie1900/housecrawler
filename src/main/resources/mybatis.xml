@@ -31,6 +31,7 @@
     <!--&lt;!&ndash;控制台输出sql语句 &ndash;&gt;-->
     <!--<setting name="logImpl" value="STDOUT_LOGGING"/>-->
     <!--</settings>-->
+
     <mappers>
         <mapper resource="mapper/HouseIDMapper.xml" class="cn.cout.dao.IHouseIDDao"/>
     </mappers>
